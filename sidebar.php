@@ -80,6 +80,12 @@
 </ul>
 </section>
 <?php endif; ?>
+
+<?php if ($this->options->sideVisitorMap): ?>
+<h3 class="widget-title">访客</h3>
+<?php $this->options->sideVisitorMap(); ?>
+<?php endif; ?>
+
 <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOther', $this->options->sidebarBlock)): ?>
 <section class="widget">
 <h3 class="widget-title">其它</h3>

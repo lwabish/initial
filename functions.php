@@ -183,6 +183,9 @@ function themeConfig($form) {
 
 	$CustomContent = new Typecho_Widget_Helper_Form_Element_Textarea('CustomContent', NULL, NULL, _t('底部自定义内容'), _t('位于底部，footer之后body之前，适合放置一些JS内容，如网站统计代码等（若开启全站Pjax，目前支持Google和百度统计的回调，其余统计代码可能会不准确）'));
 	$form->addInput($CustomContent);
+
+	$sideVisitorMap = new Typecho_Widget_Helper_Form_Element_Textarea('sideVisitorMap', NULL, NULL, _t('sidebar自定义script'), _t('比如mapmyvisitors.com访客地图等'));
+	$form->addInput($sideVisitorMap);
 }
 
 function themeInit($archive) {
