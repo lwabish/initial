@@ -5,6 +5,19 @@
 <?php Whisper(1); ?>
 </section>
 <?php endif; ?>
+
+<?php if (!empty($this->options->ShowLinks) && in_array('sidebar', $this->options->ShowLinks)): ?>
+<section class="widget">
+<h3 class="widget-title">传送门</h3>
+<ul class="widget-tile">
+<?php Links($this->options->IndexLinksSort); ?>
+<?php if (FindContents('page-links.php', 'order', 'a', 1)): ?>
+<li class="more"><a href="<?php echo FindContents('page-links.php', 'order', 'a', 1)[0]['permalink']; ?>">查看更多...</a></li>
+<?php endif; ?>
+</ul>
+</section>
+<?php endif; ?>
+
 <?php if (!empty($this->options->sidebarBlock) && in_array('ShowHotPosts', $this->options->sidebarBlock)): ?>
 <section class="widget">
 <h3 class="widget-title">热门文章</h3>
@@ -60,23 +73,13 @@
 </ul>
 </section>
 <?php endif; ?>
+
 <?php if (!empty($this->options->sidebarBlock) && in_array('ShowArchive', $this->options->sidebarBlock)): ?>
 <section class="widget">
 <h3 class="widget-title">归档</h3>
 <ul class="widget-list">
 <?php $this->widget('Widget_Contents_Post_Date', 'type=month&format=Y 年 n 月')
 ->parse('<li><a href="{permalink}">{date}</a></li>'); ?>
-</ul>
-</section>
-<?php endif; ?>
-<?php if (!empty($this->options->ShowLinks) && in_array('sidebar', $this->options->ShowLinks)): ?>
-<section class="widget">
-<h3 class="widget-title">链接</h3>
-<ul class="widget-tile">
-<?php Links($this->options->IndexLinksSort); ?>
-<?php if (FindContents('page-links.php', 'order', 'a', 1)): ?>
-<li class="more"><a href="<?php echo FindContents('page-links.php', 'order', 'a', 1)[0]['permalink']; ?>">查看更多...</a></li>
-<?php endif; ?>
 </ul>
 </section>
 <?php endif; ?>
