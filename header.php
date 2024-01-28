@@ -77,6 +77,7 @@ endwhile;
 <?php
 endif;
 endif;
+
 if (!empty($this->options->Navset) && in_array('ShowPage', $this->options->Navset)):
 if (in_array('AggPage', $this->options->Navset)):
 ?>
@@ -87,6 +88,16 @@ endif;
 $this->widget('Widget_Contents_Page_List')->to($pages);
 while($pages->next()):
 ?>
+
+<?php
+    if ($pages->template == 'page-whisper.php' && !in_array('header', $this->options->ShowWhisper)) {
+        continue; // 跳过本轮循环
+    }
+    if ($pages->template == 'page-links.php' && !in_array('header', $this->options->ShowLinks)) {
+        continue; // 跳过本轮循环
+    }
+?>
+
 <li><a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a></li>
 <?php endwhile;
 if (in_array('AggPage', $this->options->Navset)): ?>
