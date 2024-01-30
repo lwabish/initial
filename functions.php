@@ -186,6 +186,12 @@ function themeConfig($form) {
 
 	$sideVisitorMap = new Typecho_Widget_Helper_Form_Element_Textarea('sideVisitorMap', NULL, NULL, _t('sidebar自定义script'), _t('比如mapmyvisitors.com访客地图等'));
 	$form->addInput($sideVisitorMap);
+
+	$enableTravelling = new Typecho_Widget_Helper_Form_Element_Radio('enableTravelling', 
+	array(1 => _t('启用'),
+	0 => _t('关闭')),
+	0, _t('加入Travelling支持'), _t('在header加入到travelling的链接'));
+	$form->addInput($enableTravelling);
 }
 
 function themeInit($archive) {

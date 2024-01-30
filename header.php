@@ -99,8 +99,13 @@ while($pages->next()):
 ?>
 
 <li><a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a></li>
-<?php endwhile;
-if (in_array('AggPage', $this->options->Navset)): ?>
+<?php endwhile;?>
+
+<?php if ($this->options->enableTravelling):?>
+<li><a href="https://www.travellings.cn/go.html" title="Travelling" target="_blank">🚇Travelling</a></li>
+<?php endif; ?>
+
+<?php if (in_array('AggPage', $this->options->Navset)): ?>
 </ul>
 </li>
 <?php endif;
