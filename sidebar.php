@@ -26,6 +26,20 @@
 </ul>
 </section>
 <?php endif; ?>
+
+<?php if (!empty($this->options->sidebarBlock) && in_array('ShowTag', $this->options->sidebarBlock)): ?>
+<section class="widget">
+<h3 class="widget-title">标签</h3>
+<ul class="widget-tile">
+<?php $this->widget('Widget_Metas_Tag_Cloud', 'ignoreZeroCount=1&limit=30')->to($tags); ?>
+<?php if($tags->have()): ?>
+<?php while($tags->next()): ?>
+<li><a href="<?php $tags->permalink(); ?>"><?php $tags->name(); ?></a></li>
+<?php endwhile; ?>
+<?php else: ?>
+<li>暂无标签</li>
+<?php endif; ?>
+
 <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
 <section class="widget">
 <h3 class="widget-title">最新文章</h3>
@@ -58,18 +72,7 @@
 </ul>
 </section>
 <?php endif; ?>
-<?php if (!empty($this->options->sidebarBlock) && in_array('ShowTag', $this->options->sidebarBlock)): ?>
-<section class="widget">
-<h3 class="widget-title">标签</h3>
-<ul class="widget-tile">
-<?php $this->widget('Widget_Metas_Tag_Cloud', 'ignoreZeroCount=1&limit=30')->to($tags); ?>
-<?php if($tags->have()): ?>
-<?php while($tags->next()): ?>
-<li><a href="<?php $tags->permalink(); ?>"><?php $tags->name(); ?></a></li>
-<?php endwhile; ?>
-<?php else: ?>
-<li>暂无标签</li>
-<?php endif; ?>
+
 </ul>
 </section>
 <?php endif; ?>
